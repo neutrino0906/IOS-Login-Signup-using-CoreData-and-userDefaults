@@ -24,21 +24,39 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpButtonAction(_ sender: Any) {
         
         if((nameTextField.text) == ""){
-            presentAlertBox("Please enter your name!")
+            nameTextField.placeholder = "Please enter your name"
+            createErrorBorderAroundTextfield(nameTextField)
+            nameTextField.becomeFirstResponder()
+            nameTextField.addTarget(self, action: #selector(removeErrorBorderAroundTextfield), for: UIControl.Event.allEditingEvents)
+            
         }
         else if((emailTextField.text) == ""){
-            presentAlertBox("Please enter your email!")
+            createErrorBorderAroundTextfield(emailTextField)
+            emailTextField.becomeFirstResponder()
+            emailTextField.addTarget(self, action: #selector(removeErrorBorderAroundTextfield), for: UIControl.Event.allEditingEvents)
+            emailTextField.placeholder = "Please enter your email!"
         }
         else if((passwordTextField.text) == ""){
-            presentAlertBox("Please enter valid password!")
+            createErrorBorderAroundTextfield(passwordTextField)
+            passwordTextField.becomeFirstResponder()
+            passwordTextField.addTarget(self, action: #selector(removeErrorBorderAroundTextfield), for: UIControl.Event.allEditingEvents)
+            passwordTextField.placeholder = "Please enter valid password!"
         }
-        else if((nameTextField.text) == ""){
-            presentAlertBox("Please confirm your password!")
+        else if((confirmPasswordTextField.text) == ""){
+            createErrorBorderAroundTextfield(confirmPasswordTextField)
+            confirmPasswordTextField.becomeFirstResponder()
+            confirmPasswordTextField.addTarget(self, action: #selector(removeErrorBorderAroundTextfield), for: UIControl.Event.allEditingEvents)
+            confirmPasswordTextField.placeholder = "Please confirm your password!"
         }
         else if((phoneNumberTextField.text) == ""){
-            presentAlertBox("Please enter your phone number!")
+            createErrorBorderAroundTextfield(phoneNumberTextField)
+            phoneNumberTextField.becomeFirstResponder()
+            phoneNumberTextField.addTarget(self, action: #selector(removeErrorBorderAroundTextfield), for: UIControl.Event.allEditingEvents)
+            phoneNumberTextField.placeholder = "Please enter your phone number"
         }
         else if(passwordTextField.text != confirmPasswordTextField.text){
+            
+            
             presentAlertBox("Password and Re-entered password do not match")
         }
         else{
@@ -75,6 +93,16 @@ class SignUpViewController: UIViewController {
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 4
         textField.layer.borderColor = UIColor(named: "BorderColor")?.cgColor
+    }
+    
+    func createErrorBorderAroundTextfield(_ textField : UITextField){
+        textField.layer.borderWidth = 2.0
+        textField.layer.cornerRadius = 4
+        textField.layer.borderColor = CGColor.init(red: 1, green: 0, blue: 0, alpha: 1)
+    }
+    
+    @objc func removeErrorBorderAroundTextfield(_ textField : UITextField){
+        createBorderAroundTextfield(textField)
     }
     
 
