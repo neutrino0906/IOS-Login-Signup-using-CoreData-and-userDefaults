@@ -16,6 +16,23 @@ class SignInEmailPasswordViewController: UIViewController, SignInEmailPasswordVi
     
     @IBOutlet var userEmailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var togglePasswordVisibilityButton: UIButton!
+    @IBAction func togglePasswordVisibilityAction(_ sender: Any) {
+        
+        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        
+        if(passwordTextField.isSecureTextEntry){
+            togglePasswordVisibilityButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+        else{
+            togglePasswordVisibilityButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        }
+        
+        
+        
+        
+    }
+    
     
     
     //Sign In Button Action

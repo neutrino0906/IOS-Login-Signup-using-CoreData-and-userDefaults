@@ -29,8 +29,31 @@ extension OtpViewController: UITextFieldDelegate{
     
     
     @objc func textFieldDidChange(textField: UITextField){
-
+        
         let text = textField.text
+        
+        
+        var j = 0
+        
+        if(text!.count > 6){
+            textField.text = ""
+            textField.resignFirstResponder()
+            return
+        }
+        
+        if text?.count == 6{
+            for i in text!{
+                textfieldList[j]!.text = String(i)
+                textfieldList[j]?.resignFirstResponder()
+                j += 1
+                
+            }
+            otpDigit6.becomeFirstResponder()
+            highlightTextField(otpDigit6)
+            return
+        }
+        
+        
         
         if text == ""{
             switch textField{
@@ -58,50 +81,57 @@ extension OtpViewController: UITextFieldDelegate{
                 break
             }
         }
-
+        
         if text?.utf16.count ?? 0 >= 1{
             switch textField{
             case otpDigit1:
+                otpDigit1.textColor = UIColor.black
                 if(otpDigit1.text?.count==2){
                     let char = otpDigit1.text!
                     otpDigit1.text = String(char.suffix(1))
                 }
-                removeHighlightTextField(otpDigit1)
+//                removeHighlightTextField(otpDigit1)
                 otpDigit2.becomeFirstResponder()
                 highlightTextField(otpDigit2)
             case otpDigit2:
+                otpDigit2.textColor = UIColor.black
                 if(otpDigit2.text?.count==2){
                     let char = otpDigit2.text!
                     otpDigit2.text = String(char.suffix(1))
                 }
-                removeHighlightTextField(otpDigit2)
+//                removeHighlightTextField(otpDigit2)
                 otpDigit3.becomeFirstResponder()
                 highlightTextField(otpDigit3)
             case otpDigit3:
+                otpDigit3.textColor = UIColor.black
                 if(otpDigit3.text?.count==2){
                     let char = otpDigit3.text!
                     otpDigit3.text = String(char.suffix(1))
                 }
-                removeHighlightTextField(otpDigit3)
+//                removeHighlightTextField(otpDigit3)
                 otpDigit4.becomeFirstResponder()
                 highlightTextField(otpDigit4)
             case otpDigit4:
+                
+                otpDigit4.textColor = UIColor.black
                 if(otpDigit4.text?.count==2){
                     let char = otpDigit4.text!
                     otpDigit4.text = String(char.suffix(1))
                 }
-                removeHighlightTextField(otpDigit4)
+//                removeHighlightTextField(otpDigit4)
                 otpDigit5.becomeFirstResponder()
                 highlightTextField(otpDigit5)
             case otpDigit5:
+                otpDigit5.textColor = UIColor.black
                 if(otpDigit5.text?.count==2){
                     let char = otpDigit5.text!
                     otpDigit5.text = String(char.suffix(1))
                 }
-                removeHighlightTextField(otpDigit5)
+//                removeHighlightTextField(otpDigit5)
                 otpDigit6.becomeFirstResponder()
                 highlightTextField(otpDigit6)
             case otpDigit6:
+                otpDigit6.textColor = UIColor.black
                 if(otpDigit6.text?.count==2){
                     let char = otpDigit6.text!
                     otpDigit6.text = String(char.suffix(1))
@@ -116,6 +146,13 @@ extension OtpViewController: UITextFieldDelegate{
     }
     
     func highlightTextField(_ textField: UITextField){
+//        removeHighlightTextField(otpDigit1)
+//        removeHighlightTextField(otpDigit2)
+//        removeHighlightTextField(otpDigit3)
+//        removeHighlightTextField(otpDigit4)
+//        removeHighlightTextField(otpDigit5)
+//        removeHighlightTextField(otpDigit6)
+        
         textField.layer.borderWidth = 2.0
         textField.layer.cornerRadius = 4
         textField.layer.borderColor = UIColor(named: "BorderColor")?.cgColor
@@ -131,17 +168,13 @@ extension OtpViewController: UITextFieldDelegate{
         
         if(!emailOrNumber.contains("@"))
         {
-            FirebaseFunctions().sendVerificationCode(to: "+91\(emailOrNumber)") { success in
+            FirebaseFunctions().sendVerificationCode(to: "\(countryCode)\(emailOrNumber)") { success in
                 
                 if(success){
                     Helpers().presentAlertBox("Code sent successfully", self)
                 }
-                
             }
         }
-        
-        
-        
     }
     
     func startTimerForResendButton(){

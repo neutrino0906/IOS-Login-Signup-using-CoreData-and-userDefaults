@@ -21,13 +21,15 @@ class OtpViewController: UIViewController {
     
     @IBOutlet var resendCodeButton: UIButton!
     
+    var textfieldList : [UITextField?] = []
     var timer = Timer()
     var timeToResend = 60
     var emailOrNumber = ""
+    var countryCode = ""
 
     @IBAction func verifyAction(_ sender: Any) {
         let otp = otpFromTextfields()
-        
+        print(otp)
         if(otp.count != 6){
             Helpers().presentAlertBox("Incomplete Otp", self)
             return
@@ -56,7 +58,9 @@ class OtpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startTimerForResendButton()
-        
+        textfieldList = [otpDigit1,otpDigit2,otpDigit3,otpDigit4,otpDigit5,otpDigit6]
+        otpDigit1.becomeFirstResponder()
+        highlightTextField(otpDigit1)
         
         otpDigit1.delegate = self
         otpDigit2.delegate = self
@@ -65,6 +69,7 @@ class OtpViewController: UIViewController {
         otpDigit5.delegate = self
         otpDigit6.delegate = self
         
+        
         otpDigit1.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
         otpDigit2.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
         otpDigit3.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
@@ -72,7 +77,22 @@ class OtpViewController: UIViewController {
         otpDigit5.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
         otpDigit6.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
         otpSentToLabel.text = "We've sent verification code to \(emailOrNumber)"
+        
+        
+        otpDigit1.addTarget(self, action: #selector(onTouchBegin), for: .editingDidBegin)
+        otpDigit2.addTarget(self, action: #selector(onTouchBegin), for: .editingDidBegin)
+        otpDigit3.addTarget(self, action: #selector(onTouchBegin), for: .editingDidBegin)
+        otpDigit4.addTarget(self, action: #selector(onTouchBegin), for: .editingDidBegin)
+        otpDigit5.addTarget(self, action: #selector(onTouchBegin), for: .editingDidBegin)
+        otpDigit6.addTarget(self, action: #selector(onTouchBegin), for: .editingDidBegin)
 
+    }
+    
+    @objc func onTouchBegin(textField : UITextField){
+        
+        textField.text = "."
+        textField.textColor = UIColor(named: "otpTextBg")
+        
     }
     
     

@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -114,6 +115,19 @@
                                     <segue destination="KlA-tA-c73" kind="show" id="MgI-g1-qBQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzE-4q-W2h">
+                                <rect key="frame" x="334" y="337" width="36" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray">
+                                    <imageReference key="image" image="eye" catalog="system" symbolScale="large"/>
+                                    <color key="baseForegroundColor" red="0.11031300569999999" green="0.58054286239999997" blue="0.46312391759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="togglePasswordVisibilityAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dMq-Iy-9nR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -121,12 +135,13 @@
                     <navigationItem key="navigationItem" id="Hkn-Ac-ZbY"/>
                     <connections>
                         <outlet property="passwordTextField" destination="emd-nz-xXK" id="cFf-EC-XEY"/>
+                        <outlet property="togglePasswordVisibilityButton" destination="xzE-4q-W2h" id="bWi-AN-4zp"/>
                         <outlet property="userEmailTextField" destination="h7H-Mv-yLd" id="3E4-Le-Vii"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="937" y="-27"/>
+            <point key="canvasLocation" x="936.64122137404581" y="-27.464788732394368"/>
         </scene>
         <!--Sign In Phone Number View Controller-->
         <scene sceneID="yNT-xC-Uw9">
@@ -151,9 +166,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMS-f3-PeN">
-                                <rect key="frame" x="16" y="259" width="361" height="34"/>
+                                <rect key="frame" x="68" y="259" width="309" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCU-CN-Wqc">
@@ -190,7 +205,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94601613279999996" green="0.96236532929999996" blue="0.97752875090000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Username" imagePadding="4" cornerStyle="capsule">
+                                <buttonConfiguration key="configuration" style="plain" title="User Email" imagePadding="4" cornerStyle="capsule">
                                     <imageReference key="image" image="person.crop.circle" catalog="system" symbolScale="small"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -218,6 +233,27 @@
                                     <segue destination="KlA-tA-c73" kind="show" id="ANb-2N-fuF"/>
                                 </connections>
                             </button>
+                            <button toolTip="Select Country Code" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GbV-Lp-GIS">
+                                <rect key="frame" x="12" y="269" width="56" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <menu key="menu" id="BE9-Mj-TpN">
+                                    <children>
+                                        <command title="Item 1" id="ABH-3C-doq"/>
+                                        <command title="Item 2" id="vMa-Ex-bag"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.11031300569999999" green="0.58054286239999997" blue="0.46312391759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <imageReference key="image" image="chevron.down" catalog="system" symbolScale="small" renderingMode="hierarchical-single">
+                                        <hierarchicalColors>
+                                            <color red="0.11031300569999999" green="0.58054286239999997" blue="0.46312391759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color systemColor="secondaryLabelColor"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tRt-eE-Teh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -226,6 +262,7 @@
                     <connections>
                         <outlet property="SignInWithNumberButton" destination="46B-Ol-fW2" id="Nzl-2P-YyT"/>
                         <outlet property="phoneNumberTextField" destination="dMS-f3-PeN" id="u0t-5L-jPJ"/>
+                        <outlet property="selectCountryCodeButton" destination="GbV-Lp-GIS" id="THq-jf-DFG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSw-QY-Q6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -237,7 +274,7 @@
             <objects>
                 <viewController id="KlA-tA-c73" customClass="SignUpViewController" customModule="loginProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OZk-Sd-cRX">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create your account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gef-Cc-g2z">
@@ -408,6 +445,14 @@
                                     <action selector="signUpButtonAction:" destination="KlA-tA-c73" eventType="touchUpInside" id="cBn-yE-fvm"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnC-fz-FKp">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.11031300569999999" green="0.58054286239999997" blue="0.46312391759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem title="Title" id="aFY-P2-snk"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RRz-VJ-zwj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -441,17 +486,25 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ANb-2N-fuF"/>
+        <segue reference="MgI-g1-qBQ"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="ellipsis.rectangle" catalog="system" width="128" height="79"/>
+        <image name="eye" catalog="system" width="128" height="79"/>
         <image name="gallery_icon" width="512" height="512"/>
         <image name="news_icon" width="512" height="512"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="timer_icon" width="512" height="512"/>
         <image name="todo_icon" width="256" height="256"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

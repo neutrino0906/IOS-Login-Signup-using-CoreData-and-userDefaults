@@ -12,14 +12,15 @@ class SignInPhoneNumberViewController: UIViewController {
     @IBOutlet var phoneNumberTextField: UITextField!
     
     @IBOutlet var SignInWithNumberButton: UIButton!
+    @IBOutlet var selectCountryCodeButton: UIButton!
     
-    
+    var countryCode = ""
     
     //Sign in using phone number button Action
     @IBAction func signInWithPhoneNumberAction(_ sender: Any) {
         
         
-        if(phoneNumberTextField?.text?.count != 10){
+        if(phoneNumberTextField?.text?.count != 10 || !phoneNumberTextField!.text!.isNumber){
             let alert = UIAlertController(title: "Warning", message: "Invalid Phone Number", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default)
             alert.addAction(okAction)
@@ -28,13 +29,15 @@ class SignInPhoneNumberViewController: UIViewController {
         }else{
             SignInWithNumberButton.isEnabled = false
             
-            FirebaseFunctions().sendVerificationCode(to: "+91\(phoneNumberTextField.text!)") { success in
+            FirebaseFunctions().sendVerificationCode(to: "\(countryCode)\(phoneNumberTextField.text!)") { success in
                 if(success){
                     let vc = UIStoryboard.init(name: "OtpStoryboard", bundle: Bundle.main).instantiateViewController(identifier: "OtpScreen") as! OtpViewController
                     
                     vc.emailOrNumber = self.phoneNumberTextField.text!
+                    vc.countryCode = self.countryCode
                     
-                    self.navigationController?.setViewControllers([vc], animated: true)
+                    self.SignInWithNumberButton.isEnabled = true
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
                 else{
                     self.SignInWithNumberButton.isEnabled = true
@@ -58,6 +61,23 @@ class SignInPhoneNumberViewController: UIViewController {
         phoneNumberTextField.layer.borderWidth = 1.0
         phoneNumberTextField.layer.cornerRadius = 4
         phoneNumberTextField.layer.borderColor = UIColor(named: "BorderColor")?.cgColor
+        
+        setupCountryCodeDropDown()
+        
+    }
+    
+    func setupCountryCodeDropDown(){
+        let popUpButtonClosure = { (action: UIAction) in
+            self.countryCode = action.title
+            }
+        
+        var menuChildren: [UIMenuElement] = []
+        menuChildren.append(UIAction(title: "+91", handler: popUpButtonClosure))
+        menuChildren.append(UIAction(title: "+44", handler: popUpButtonClosure))
+        
+        
+        selectCountryCodeButton.menu = UIMenu(children: menuChildren)
+        selectCountryCodeButton.showsMenuAsPrimaryAction = true
     }
     
 

@@ -56,13 +56,10 @@ class SignUpViewController: UIViewController {
         }
         else if(passwordTextField.text != confirmPasswordTextField.text){
             
-            
             presentAlertBox("Password and Re-entered password do not match")
         }
         else{
             FirebaseFunctions().FirebaseSignUp(emailTextField.text ?? "", passwordTextField.text ?? "",nameTextField.text ?? "",phoneNumberTextField.text ?? "",  self)
-            
-            
             
         }
         

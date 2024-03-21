@@ -34,6 +34,7 @@
 		C7AF54262BAAB7F700E412B3 /* UserModelEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AF54242BAAB7F700E412B3 /* UserModelEntity+CoreDataProperties.swift */; };
 		C7AF54282BAAB8AF00E412B3 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AF54272BAAB8AF00E412B3 /* Database.swift */; };
 		C7AF542B2BAACD3500E412B3 /* userDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AF542A2BAACD3500E412B3 /* userDefaults.swift */; };
+		C7B279DA2BAC12DB001A09E9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B279D92BAC12DB001A09E9 /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		C7AF54242BAAB7F700E412B3 /* UserModelEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserModelEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7AF54272BAAB8AF00E412B3 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		C7AF542A2BAACD3500E412B3 /* userDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDefaults.swift; sourceTree = "<group>"; };
+		C7B279D92BAC12DB001A09E9 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				C7AF541D2BAAAEE700E412B3 /* OtpViewControllerExtension.swift */,
+				C7B279D92BAC12DB001A09E9 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				C7AF541E2BAAAEE700E412B3 /* OtpViewControllerExtension.swift in Sources */,
 				C7A76A4C2BA8161F00BA6358 /* SceneDelegate.swift in Sources */,
 				C7A76A942BA86C2900BA6358 /* DataViewController.swift in Sources */,
+				C7B279DA2BAC12DB001A09E9 /* StringExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
