@@ -48,6 +48,7 @@ class FirebaseFunctions {
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
               if let error = error {
                   completion(false)
+                  return
               }
               UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
               completion(true)

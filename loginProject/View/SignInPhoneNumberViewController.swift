@@ -31,6 +31,7 @@ class SignInPhoneNumberViewController: UIViewController {
             
             FirebaseFunctions().sendVerificationCode(to: "\(countryCode)\(phoneNumberTextField.text!)") { success in
                 if(success){
+                    
                     let vc = UIStoryboard.init(name: "OtpStoryboard", bundle: Bundle.main).instantiateViewController(identifier: "OtpScreen") as! OtpViewController
                     
                     vc.emailOrNumber = self.phoneNumberTextField.text!
