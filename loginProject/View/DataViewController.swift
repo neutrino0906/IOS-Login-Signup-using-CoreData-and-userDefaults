@@ -10,6 +10,12 @@ import Firebase
 
 class DataViewController: UIViewController {
     @IBOutlet var emailOrNumber: UILabel!
+    @IBOutlet var openTodoButton: UIButton!
+    @IBOutlet var openTimerButton: UIButton!
+    @IBOutlet var openGalleryButton: UIButton!
+    @IBOutlet var openNewsButton: UIButton!
+    
+    
     var number: String = ""
     
     
@@ -56,6 +62,11 @@ class DataViewController: UIViewController {
         super.viewDidLoad()
         userdefaults().setSignedIn(true)
         
+        addAnimation(openTodoButton)
+        addAnimation(openTimerButton)
+        addAnimation(openGalleryButton)
+        addAnimation(openNewsButton)
+        
         
         
         emailOrNumber.text = Auth.auth().currentUser?.email
@@ -63,6 +74,30 @@ class DataViewController: UIViewController {
             emailOrNumber.text = number
         }
         
+    }
+    
+    func addAnimation(_ button : UIButton){
+        
+        // Animates the position
+        let animate = CABasicAnimation(keyPath: "position")
+        animate.fromValue = CGPoint(x: button.frame.midX+10, y: button.frame.midY)
+        animate.toValue = NSValue(cgPoint: button.center)
+        animate.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animate.duration = 0.5
+        
+        
+        button.layer.add(animate, forKey: "position")
+        
+        
+        
+//        //Animates the opacity
+        let animateOpacity = CABasicAnimation(keyPath: "opacity")
+        animateOpacity.fromValue = 0
+        animateOpacity.toValue = 1.0
+        animateOpacity.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animateOpacity.duration = 0.5
+        
+        button.layer.add(animateOpacity, forKey: "opacity")
     }
 
 

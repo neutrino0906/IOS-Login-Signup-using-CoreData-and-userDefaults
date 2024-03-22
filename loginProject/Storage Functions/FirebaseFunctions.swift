@@ -13,10 +13,11 @@ class FirebaseFunctions {
     let auth = Auth.auth()
     
     
-    func FirebaseSignIn(_ email : String, _ password: String, _ controller : UIViewController){
+    func FirebaseSignIn(_ email : String, _ password: String, _ controller : SignInEmailPasswordViewController){
         auth.signIn(withEmail: email, password: password) { AuthDataResult, Error in
             if let Error = Error{
                 Helpers().presentAlertBox(Error.localizedDescription, controller)
+                controller.signInEmailPasswordButton.isEnabled = true
             }
             
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "DataScreen") as! DataViewController

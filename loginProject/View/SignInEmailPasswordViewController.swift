@@ -17,6 +17,11 @@ class SignInEmailPasswordViewController: UIViewController, SignInEmailPasswordVi
     @IBOutlet var userEmailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var togglePasswordVisibilityButton: UIButton!
+    @IBOutlet var signInEmailPasswordButton: UIButton!
+    
+    
+    
+    
     @IBAction func togglePasswordVisibilityAction(_ sender: Any) {
         
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
@@ -27,10 +32,6 @@ class SignInEmailPasswordViewController: UIViewController, SignInEmailPasswordVi
         else{
             togglePasswordVisibilityButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         }
-        
-        
-        
-        
     }
     
     
@@ -44,7 +45,7 @@ class SignInEmailPasswordViewController: UIViewController, SignInEmailPasswordVi
     
     //Checks whether the entered credentials format is correct or not
     func emailPasswordChecked(_ result : Bool,_ error: String){
-        
+        signInEmailPasswordButton.isEnabled = false
         if(Database().checkUserInCoreData(userEmailTextField.text ?? "")){
             print("Fetched Directly from database...")
             let vc = self.storyboard?.instantiateViewController(identifier: "DataScreen") as! DataViewController
