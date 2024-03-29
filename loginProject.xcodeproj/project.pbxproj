@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C77083AB2BB5356600414AFF /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77083AA2BB5356600414AFF /* DatePickerController.swift */; };
 		C7A4A2CB2BA958A700E907F6 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A4A2CA2BA958A700E907F6 /* FirebaseFunctions.swift */; };
 		C7A4A2CE2BA9656B00E907F6 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A4A2CD2BA9656B00E907F6 /* Helpers.swift */; };
 		C7A76A4A2BA8161F00BA6358 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A76A492BA8161F00BA6358 /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C77083AA2BB5356600414AFF /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		C7A4A2CA2BA958A700E907F6 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		C7A4A2CD2BA9656B00E907F6 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		C7A76A462BA8161F00BA6358 /* loginProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loginProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 				C7A76A822BA82AC400BA6358 /* Presenter */,
 				C7A76A832BA82ACB00BA6358 /* Interactor */,
 				C7A76A4F2BA8161F00BA6358 /* Main.storyboard */,
+				C77083AA2BB5356600414AFF /* DatePickerController.swift */,
 				C7A76A7F2BA828A700BA6358 /* OtpStoryboard.storyboard */,
 				C7A76A572BA8162000BA6358 /* LaunchScreen.storyboard */,
 				C7A76A552BA8162000BA6358 /* Assets.xcassets */,
@@ -399,6 +402,7 @@
 				C7AF54252BAAB7F700E412B3 /* UserModelEntity+CoreDataClass.swift in Sources */,
 				C7A76A4E2BA8161F00BA6358 /* SignInEmailPasswordViewController.swift in Sources */,
 				C7A76A542BA8161F00BA6358 /* loginProject.xcdatamodeld in Sources */,
+				C77083AB2BB5356600414AFF /* DatePickerController.swift in Sources */,
 				C7AF54262BAAB7F700E412B3 /* UserModelEntity+CoreDataProperties.swift in Sources */,
 				C7A76A4A2BA8161F00BA6358 /* AppDelegate.swift in Sources */,
 				C7AF541E2BAAAEE700E412B3 /* OtpViewControllerExtension.swift in Sources */,

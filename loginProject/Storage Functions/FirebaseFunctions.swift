@@ -65,7 +65,10 @@ class FirebaseFunctions {
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
         
+        print(verificationID)
+        
         Auth.auth().signIn(with: credential) { (authResult, error) in
+            
             if let error = error {
                 completion(false)
             }

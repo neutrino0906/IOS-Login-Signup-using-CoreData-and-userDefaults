@@ -62,10 +62,24 @@ class DataViewController: UIViewController {
         super.viewDidLoad()
         userdefaults().setSignedIn(true)
         
+        CATransaction.begin()
+        CATransaction.setCompletionBlock{
+            CATransaction.begin()
+            CATransaction.setCompletionBlock{
+                CATransaction.begin()
+                CATransaction.setCompletionBlock{
+                    self.addAnimation(self.openNewsButton)
+                }
+                self.addAnimation(self.openGalleryButton)
+                CATransaction.commit()
+                
+            }
+            self.addAnimation(self.openTimerButton)
+            CATransaction.commit()
+            
+        }
         addAnimation(openTodoButton)
-        addAnimation(openTimerButton)
-        addAnimation(openGalleryButton)
-        addAnimation(openNewsButton)
+        CATransaction.commit()
         
         
         
@@ -79,18 +93,20 @@ class DataViewController: UIViewController {
     func addAnimation(_ button : UIButton){
         
         // Animates the position
-        let animate = CABasicAnimation(keyPath: "position")
+        let animate = CASpringAnimation(keyPath: "position")
         animate.fromValue = CGPoint(x: button.frame.midX+10, y: button.frame.midY)
         animate.toValue = NSValue(cgPoint: button.center)
         animate.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animate.damping = 5
         animate.duration = 0.5
+        
         
         
         button.layer.add(animate, forKey: "position")
         
         
         
-//        //Animates the opacity
+        //Animates the opacity
         let animateOpacity = CABasicAnimation(keyPath: "opacity")
         animateOpacity.fromValue = 0
         animateOpacity.toValue = 1.0
@@ -98,6 +114,8 @@ class DataViewController: UIViewController {
         animateOpacity.duration = 0.5
         
         button.layer.add(animateOpacity, forKey: "opacity")
+        
+        button.alpha = 1
     }
 
 

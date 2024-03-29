@@ -14,7 +14,7 @@ class SignInPhoneNumberViewController: UIViewController {
     @IBOutlet var SignInWithNumberButton: UIButton!
     @IBOutlet var selectCountryCodeButton: UIButton!
     
-    var countryCode = ""
+    var countryCode = "+91"
     
     //Sign in using phone number button Action
     @IBAction func signInWithPhoneNumberAction(_ sender: Any) {
@@ -28,7 +28,7 @@ class SignInPhoneNumberViewController: UIViewController {
             
         }else{
             SignInWithNumberButton.isEnabled = false
-            
+            print("\(countryCode)\(phoneNumberTextField.text!)")
             FirebaseFunctions().sendVerificationCode(to: "\(countryCode)\(phoneNumberTextField.text!)") { success in
                 if(success){
                     
